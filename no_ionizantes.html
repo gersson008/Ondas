@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora de Ondas No Ionizantes</title>
+  <link rel="stylesheet" href="no_ionizantes.css" />
+</head>
+<body>
+  <header>
+    <h1>📡 Calculadora de Ondas No Ionizantes</h1>
+    <p class="explicacion">
+      Las <strong>ondas no ionizantes</strong> no tienen suficiente energía para ionizar átomos, pero sí pueden producir efectos térmicos o de excitación. Estas incluyen <span class="tipo">ondas de radio</span>, <span class="tipo">microondas</span>, <span class="tipo">infrarrojo</span> y <span class="tipo">luz visible</span>. Se calcula con la fórmula <code>v = f × λ</code>.
+    </p>
+  </header>
+
+  <main>
+    <section class="calculadora">
+      <input type="text" id="frecuencia" placeholder="Frecuencia (Hz)" />
+      <input type="text" id="longitud" placeholder="Longitud de onda (m)" />
+      <button onclick="calcular()">Calcular</button>
+      <p id="resultadoVelocidad">Velocidad: </p>
+    </section>
+
+    <div class="contenedor">
+      <aside class="info-ondas">
+        <h3>Rangos Típicos:</h3>
+        <ul>
+          <li><strong>Radio:</strong> f &lt; 10⁹ Hz | λ &gt; 0.1 m</li>
+          <li><strong>Microondas:</strong> f ≈ 10⁹–10¹² Hz | λ ≈ 1 mm – 10 cm</li>
+          <li><strong>Infrarrojo:</strong> f ≈ 10¹²–10¹⁴ Hz | λ ≈ 0.7 μm – 1 mm</li>
+          <li><strong>Luz visible:</strong> f ≈ 4×10¹⁴–7.5×10¹⁴ Hz | λ ≈ 400–700 nm</li>
+        </ul>
+      </aside>
+
+      <section class="onda-box">
+        <canvas id="ondaCanvas" width="600" height="200"></canvas>
+        <p id="tipoOnda" class="tipo-resultado">Tipo de onda:</p>
+      </section>
+    </div>
+  </main>
+
+  <script src="no_ionizantes.js"></script>
+</body>
+</html>

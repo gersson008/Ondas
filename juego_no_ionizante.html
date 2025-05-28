@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¡Atrapa las Ondas Buenas!</title>
+  <link rel="stylesheet" href="juego_no.css">
+</head>
+<body>
+  <div class="juego">
+    <h1>🧬 ¡Atrapa las Ondas NO Ionizantes!</h1>
+    <p>Atrapa solo las ondas <strong>no ionizantes</strong>. Evita las ionizantes.</p>
+    <p id="puntos">Puntaje: 0 | Vidas: 3</p>
+
+<div class="zona-juego">
+  <!-- Columna Izquierda -->
+  <div class="info-educativa">
+    <h3>🧾 Ondas No Ionizantes</h3>
+    <ul>
+      <li><strong>Ondas de Radio:</strong> Usadas en comunicaciones.</li>
+      <li><strong>Microondas:</strong> En hornos y celulares.</li>
+    </ul>
+  </div>
+
+  <!-- Juego -->
+  <canvas id="juegoCanvas" width="600" height="400"></canvas>
+
+  <!-- Columna Derecha -->
+  <div class="info-educativa">
+    <h3>💡 Más ejemplos</h3>
+    <ul>
+      <li><strong>Infrarrojo:</strong> Calienta sin ionizar.</li>
+      <li><strong>Luz Visible:</strong> Segura para los humanos.</li>
+    </ul>
+  </div>
+</div>
+
+   
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2>💥 Fin del juego</h2>
+      <p>Te quedaste sin vidas. ¡Recarga para intentarlo de nuevo!</p>
+      <button onclick="location.reload()">🔁 Reiniciar</button>
+    </div>
+  </div>
+
+  <script src="juego_no.js"></script>
+</body>
+</html>

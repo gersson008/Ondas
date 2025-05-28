@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #001a26;
+  color: #ffffff;
+}
+
+header {
+  background: linear-gradient(to right, #005b96, #00c2ff);
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+.explicacion {
+  max-width: 800px;
+  margin: auto;
+  padding-top: 0.5em;
+  font-size: 1rem;
+}
+
+.tipo {
+  color: #66ffcc;
+  font-weight: bold;
+}
+
+main {
+  padding: 2em;
+}
+
+.calculadora {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}
+
+input, button {
+  padding: 0.8em;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+input {
+  width: 200px;
+}
+
+button {
+  background-color: #00bcd4;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #0097a7;
+}
+
+#resultadoVelocidad {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 1em;
+}
+
+.contenedor {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2em;
+}
+
+.onda-box {
+  text-align: center;
+}
+
+canvas {
+  background-color: #0b2e3b;
+  border: 2px solid #00ffe0;
+  border-radius: 10px;
+}
+
+.tipo-resultado {
+  margin-top: 1em;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #ffff66;
+}
+
+.info-ondas {
+  background: #003342;
+  border-left: 5px solid #00bcd4;
+  padding: 1em;
+  border-radius: 10px;
+  max-width: 280px;
+}

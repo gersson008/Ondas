@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Núcleo Ionizante</title>
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle at center, #0b0f1a, #000);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+    .contenedor {
+      margin: 40px auto;
+      padding: 30px;
+      width: 90%;
+      max-width: 600px;
+      background: linear-gradient(145deg, #1e2746, #0f1325);
+      border: 2px solid #00f0ff;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #00f0ff80;
+    }
+    .vidas-tiempo {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .vidas {
+      color: #ff5e5e;
+      font-size: 1.3em;
+    }
+    .tiempo {
+      color: #ffdc5e;
+      font-size: 1.3em;
+    }
+    .nucleo {
+      margin: 20px auto;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00f0ff, #0ff);
+      box-shadow: 0 0 40px #00f0ff;
+      animation: pulsoIonizante 2s infinite ease-in-out;
+    }
+    @keyframes pulsoIonizante {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 20px #00f0ff; }
+      50% { transform: scale(1.1); box-shadow: 0 0 60px #00f0ff; }
+    }
+    .barra {
+      width: 100%;
+      height: 20px;
+      background: #555;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .progreso {
+      width: 0%;
+      height: 100%;
+      background: #00ff88;
+      transition: width 0.3s;
+    }
+    .pregunta {
+      margin-top: 20px;
+    }
+    .opcion {
+      background: #151d30;
+      margin: 8px auto;
+      padding: 12px 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      cursor: pointer;
+      transition: background 0.3s;
+      border: 1px solid #00f0ff;
+    }
+    .opcion:hover {
+      background: #1e2a47;
+    }
+    .explosion, .desactivado {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3em;
+      z-index: 9999;
+      color: white;
+    }
+    .explosion {
+      background: radial-gradient(circle, red 10%, black 90%);
+      animation: estallar 1s ease-out forwards;
+    }
+    .desactivado {
+      background: radial-gradient(circle, #00ff88 10%, #003322 90%);
+      animation: flotar 1s ease-out forwards;
+    }
+    @keyframes estallar {
+      0% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes flotar {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <div class="vidas-tiempo">
+      <div class="vidas" id="vidas">❤️❤️❤️</div>
+      <div class="tiempo" id="tiempo">⏱️ 30s</div>
+    </div>
+    <div class="nucleo" id="nucleo"></div>
+    <h1>Desactiva el Núcleo Ionizante</h1>
+    <div class="barra">
+      <div class="progreso" id="progreso"></div>
+    </div>
+    <div class="pregunta" id="quiz"></div>
+  </div>
+  <div id="resultado" style="display: none;"></div>
+
+  <script>
+    const preguntas = [
+      {
+        texto: "¿Qué tipo de onda tiene mayor energía?",
+        opciones: ["Microondas", "Rayos X", "Radio"],
+        correcta: 1
+      },
+      {
+        texto: "¿Cuál de estas ondas es ionizante?",
+        opciones: ["Ultrasonido", "Rayos gamma", "Infrarrojo"],
+        correcta: 1
+      },
+      {
+        texto: "¿Qué puede causar una onda ionizante?",
+        opciones: ["Enfriamiento", "Mutación celular", "Ondas cerebrales"],
+        correcta: 1
+      }
+    ];
+
+    let indice = 0;
+    let progreso = 0;
+    let vidas = 3;
+    let tiempoRestante = 30;
+    let temporizador = setInterval(() => {
+      tiempoRestante--;
+      document.getElementById("tiempo").textContent = `⏱️ ${tiempoRestante}s`;
+      if (tiempoRestante <= 0) {
+        mostrarExplosion();
+        clearInterval(temporizador);
+      }
+    }, 1000);
+
+    function mostrarPregunta() {
+      if (indice >= preguntas.length) {
+        document.getElementById("resultado").style.display = "flex";
+        document.getElementById("resultado").className = "desactivado";
+        document.getElementById("resultado").textContent = "✅ ¡Núcleo desactivado!";
+        document.querySelector(".contenedor").style.display = "none";
+        clearInterval(temporizador);
+        return;
+      }
+
+      const p = preguntas[indice];
+      const div = document.getElementById("quiz");
+      div.innerHTML = `<h3>${p.texto}</h3>`;
+      p.opciones.forEach((opcion, i) => {
+        const btn = document.createElement("div");
+        btn.className = "opcion";
+        btn.textContent = opcion;
+        btn.onclick = () => verificarRespuesta(i);
+        div.appendChild(btn);
+      });
+    }
+
+    function verificarRespuesta(seleccionada) {
+      const correcta = preguntas[indice].correcta;
+      if (seleccionada === correcta) {
+        progreso += 100 / preguntas.length;
+        document.getElementById("progreso").style.width = progreso + "%";
+        indice++;
+        mostrarPregunta();
+      } else {
+        vidas--;
+        document.getElementById("vidas").textContent = "❤️".repeat(vidas);
+        if (vidas <= 0) {
+          mostrarExplosion();
+          clearInterval(temporizador);
+        }
+      }
+    }
+
+    function mostrarExplosion() {
+      document.getElementById("resultado").style.display = "flex";
+      document.getElementById("resultado").className = "explosion";
+      document.getElementById("resultado").textContent = "💥 ¡El núcleo explotó!";
+      document.querySelector(".contenedor").style.display = "none";
+    }
+
+    mostrarPregunta();
+  </script>
+</body>
+</html>

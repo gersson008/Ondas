@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora de Ondas Ionizantes</title>
+  <link rel="stylesheet" href="ionizantes.css" />
+</head>
+<body>
+  <header>
+    <h1>🔬 Calculadora de Ondas Ionizantes</h1>
+    <p class="explicacion">
+      Las <strong>ondas ionizantes</strong> son aquellas que tienen suficiente energía como para liberar electrones de los átomos. Esto incluye <span class="tipo">ultravioleta</span>, <span class="tipo">rayos X</span> y <span class="tipo">rayos gamma</span>. La fórmula que usamos es <code>v = f × λ</code>, donde:
+      <br><strong>v</strong> es velocidad (m/s), <strong>f</strong> es frecuencia (Hz) y <strong>λ</strong> es longitud de onda (m).
+    </p>
+  </header>
+
+  <main>
+    <section class="calculadora">
+      <input type="text" id="frecuencia" placeholder="Frecuencia (Hz)" />
+      <input type="text" id="longitud" placeholder="Longitud de onda (m)" />
+      <button onclick="calcular()">Calcular</button>
+      <p id="resultadoVelocidad">Velocidad: </p>
+    </section>
+
+    <div class="contenedor">
+      <aside class="info-ondas">
+        <h3>Rangos Típicos:</h3>
+        <ul>
+          <li><strong>UV:</strong> f ≈ 10¹⁵ Hz | λ ≈ 10⁻⁷ m</li>
+          <li><strong>Rayos X:</strong> f ≈ 10¹⁷ Hz | λ ≈ 10⁻¹⁰ m</li>
+          <li><strong>Rayos Gamma:</strong> f > 10¹⁹ Hz | λ < 10⁻¹² m</li>
+        </ul>
+      </aside>
+
+      <section class="onda-box">
+        <canvas id="ondaCanvas" width="600" height="200"></canvas>
+
+        <p id="tipoOnda" class="tipo-resultado">Tipo de onda:</p>
+      </section>
+    </div>
+  </main>
+
+  <script src="ionizantes.js"></script>
+</body>
+</html>

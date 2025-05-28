@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Ondas Ionizantes y No Ionizantes</title>
+  <link rel="stylesheet" href="menu.css" />
+</head>
+<body class="oscuro">
+
+  <!-- Barra superior -->
+  <header class="top-bar">
+    <button id="ayudaBtn" title="¿Cómo funciona?" class="boton-ayuda">?</button>
+    <label class="switch">
+      <input type="checkbox" id="modoToggle" />
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <!-- Modal ayuda -->
+  <div id="modalAyuda" class="modal oculto">
+    <div class="modal-contenido">
+      <h2>¿Qué es esta calculadora?</h2>
+      <p>
+        Esta herramienta interactiva te permite calcular propiedades de ondas ionizantes y no ionizantes.
+        Aprende cómo se comportan y cómo se clasifican según su frecuencia o longitud de onda.
+      </p>
+      <button onclick="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <main>
+    <h1>ONDAS IONIZANTES Y NO IONIZANTES</h1>
+    <p class="subtitulo">Explora el espectro electromagnético de forma interactiva.</p>
+<div class="temas-grid">
+   <!-- Juego ondas no ionizantes -->
+  <a href="juego_no_ionizante.html" class="card">
+    <img src="juego_no ionizante.png" alt="Juego Onda No Ionizante" class="card-img-bg">
+    <div class="card-overlay">Juego No Ionizante</div>
+  </a>
+  <!-- Panel para ondas no ionizantes -->
+  <a href="no_ionizantes.html" class="card">
+    <img src="no_ionizantes.png" alt="Ondas No Ionizantes" class="card-img-bg">
+    <div class="card-overlay">Calculadora Ondas No Ionizantes</div>
+  </a>
+
+  <!-- Panel para ondas ionizantes -->
+  <a href="ionizantes.html" class="card">
+    <img src="ionizantes.png" alt="Ondas Ionizantes" class="card-img-bg">
+    <div class="card-overlay">Calculadora Ondas Ionizantes</div>
+  </a>
+
+  <!-- Juego ondas ionizantes -->
+  <a href="juego_ionizante.html" class="card">
+    <img src="juego_ionizante.png" alt="Juego Onda Ionizante" class="card-img-bg">
+    <div class="card-overlay">Juego Ionizante</div>
+  </a>
+</div>
+
+
+  <footer class="footer">
+    <p>© 2025 Calculadora de Ondas | Desarrollado por BRAYAN GUZMAN CAMPOS | GERSSON CUEVAS GUARNIZO| ITFIP.</p>
+    <p>Hecho para estudiantes.</p>
+  </footer>
+
+  <script src="menu.js"></script>
+</body>
+</html>
